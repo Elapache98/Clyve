@@ -2,29 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Compliance PDF Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clyve - PDF Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Compliance PDF Chatbot</h1>
+    <div class="upload-overlay" id="uploadOverlay">
+      <div class="upload-modal">
+        <h2>Upload a PDF</h2>
+        <p>Select a PDF file to start chatting</p>
+        <div class="upload-section">
+          <input type="file" id="pdfFile" accept=".pdf" class="file-input" />
+          <button id="uploadBtn" class="upload-btn">Upload PDF</button>
+        </div>
+      </div>
+    </div>
 
-    <section id="upload-section">
-      <h2>Upload PDF</h2>
-      <input type="file" id="pdfInput" accept="application/pdf" />
-      <button id="uploadBtn">Upload</button>
-      <p id="uploadStatus"></p>
-    </section>
+    <div class="main-content" id="mainContent" style="display: none;">
+      <div class="pdf-preview">
+        <div class="pdf-header">
+          <h2>PDF Preview</h2>
+          <button id="changePdfBtn" class="change-pdf-btn">Change PDF</button>
+        </div>
+        <div class="pdf-container">
+          <iframe id="pdfViewer" class="pdf-viewer"></iframe>
+        </div>
+      </div>
 
-    <section id="chat-section" style="display:none;">
-      <h2>Ask a question</h2>
-      <input type="text" id="questionInput" placeholder="Type your question here" />
-      <button id="askBtn">Ask</button>
-      <div id="answer"></div>
-    </section>
+      <div class="chat-container">
+        <div class="chat-header">
+          <h1>Clyve</h1>
+          <p>Chat with your PDF</p>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <!-- Messages will be added here dynamically -->
+        </div>
+
+        <div class="chat-input-container">
+          <textarea id="questionInput" placeholder="Ask a question about your PDF..." class="chat-input"></textarea>
+          <button id="sendBtn" class="send-btn">Send</button>
+        </div>
+      </div>
+    </div>
   </div>
-
   <script src="index.js"></script>
 </body>
 </html>
